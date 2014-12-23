@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PropertiesLoader.cs" />
     <Compile Include="OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>

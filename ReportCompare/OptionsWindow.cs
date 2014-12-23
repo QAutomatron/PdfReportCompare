@@ -19,7 +19,7 @@ namespace ReportCompare
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pathToCompareLabel.Text = Program.getComparePath();
+            pathToCompareLabel.Text = PropertiesLoader.getComparePath();
         }
 
         private void button1_Click(object sender, EventArgs e)

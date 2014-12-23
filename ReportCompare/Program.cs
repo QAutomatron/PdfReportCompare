@@ -16,7 +16,7 @@ namespace ReportCompare
     {
 
         // Загружаем путь к программам из конфигурационного файла
-        private static string pathToCompareEXE = getComparePath();
+        private static string pathToCompareEXE = PropertiesLoader.getComparePath();
         private static string pathToDiffEXE = ConfigurationManager.AppSettings[@"DiffPdfFile"];
 
 
@@ -70,13 +70,6 @@ namespace ReportCompare
         {
             return Directory.GetFiles(@path, "*.pdf");
         }
-
-            public static string getComparePath()
-            {
-                return ConfigurationManager.AppSettings[@"ComparePdfFile"];
-            }
-
-
 
     }
 }
