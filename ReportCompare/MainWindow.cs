@@ -35,12 +35,37 @@ namespace ReportCompare
             Console.SetOut(_writer);
 
             Console.WriteLine("Ready to work");
+
+            sourcePath.Text = Properties.Settings.Default.SourcePath;
+            targetPath.Text = Properties.Settings.Default.TargetPath;
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
             var optionsForm = new OptionsWindow();
             optionsForm.ShowDialog();
+        }
+
+        private void setSourcePathButton_Click(object sender, EventArgs e)
+        {
+            string s = Program.selectFolder();
+            if (s != "" && s != null)
+            {
+                sourcePath.Text = s;
+                Properties.Settings.Default.SourcePath = s;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void setTargetPathButton_Click(object sender, EventArgs e)
+        {
+            string s = Program.selectFolder();
+            if (s != "" && s != null)
+            {
+                targetPath.Text = s;
+                Properties.Settings.Default.TargetPath = s;
+                Properties.Settings.Default.Save();
+            }
         }
 
     }

@@ -15,11 +15,11 @@ namespace ReportCompare
     class Program
     {
 
-        // Загружаем путь к программам из конфигурационного файла
-        private static string pathToCompareEXE = PropertiesLoader.getComparePath();
-        private static string pathToDiffEXE = ConfigurationManager.AppSettings[@"DiffPdfFile"];
+        // Загружаем путь к программам из опций
+        private static string pathToCompareEXE = Properties.Settings.Default.ComparePdfFile;
+        private static string pathToDiffEXE = Properties.Settings.Default.DiffPdfFile;
 
-
+        [STAThread]
         static void Main()
         {
 
@@ -29,8 +29,8 @@ namespace ReportCompare
 
        public static void start()
         {
-            string[] sourceFolder = getFilesFromPath("c:/1/report/12_12_14/");
-            string[] targetFolder = getFilesFromPath("c:/1/report/15_12_14/");
+            string[] sourceFolder = getFilesFromPath(Properties.Settings.Default.SourcePath);
+            string[] targetFolder = getFilesFromPath(Properties.Settings.Default.TargetPath);
             compare(sourceFolder, targetFolder);
         }
 
@@ -69,6 +69,34 @@ namespace ReportCompare
         static string[] getFilesFromPath(String path)
         {
             return Directory.GetFiles(@path, "*.pdf");
+        }
+
+
+        // Метод для выбора файла
+        public static string selectFile()
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "Executable|*.exe";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+            string fileName = null;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                fileName = choofdlog.FileName;
+                //string[] arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
+            }
+            return fileName;
+        }
+
+        //Метод для выбора пути
+        public static string selectFolder()
+        {
+            string path = null;
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
+            if (fbd.SelectedPath != "") path = fbd.SelectedPath;
+            return path;
         }
 
     }

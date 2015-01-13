@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ReportCompare.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ComparePdfFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\armCompareTools\armcompare\comparepdf.exe</Value>
+    </Setting>
+    <Setting Name="DiffPdfFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\armCompareTools\armcompare\</Value>
+    </Setting>
+    <Setting Name="SourcePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="TargetPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
