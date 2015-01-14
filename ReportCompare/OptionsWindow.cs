@@ -18,12 +18,14 @@ namespace ReportCompare
             InitializeComponent();
         }
 
+        //Грузим форму и подгружаем настройки в TextBoxs
         private void Form1_Load(object sender, EventArgs e)
         {
             pathToCompareTextBox.Text = Properties.Settings.Default.ComparePdfFile;
             pathToDiffTextBox.Text = Properties.Settings.Default.DiffPdfFile;
         }
 
+        // Устанавливаем путь к DiffPdf.exe и сохраняем свойства
         private void setPathToDiff_Click(object sender, EventArgs e)
         {
             string s = Program.selectFile();
@@ -35,6 +37,7 @@ namespace ReportCompare
             }
         }
 
+        // Устанавливаем путь к ComparePdf.exe и сохраняем свойства
         private void setPathToCompare_Click(object sender, EventArgs e)
         {
             string s = Program.selectFile();

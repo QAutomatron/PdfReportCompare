@@ -35,6 +35,7 @@
             this.setTargetPathButton = new System.Windows.Forms.Button();
             this.sourcePath = new System.Windows.Forms.TextBox();
             this.targetPath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -49,15 +50,17 @@
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(13, 106);
+            this.txtConsole.Location = new System.Drawing.Point(13, 118);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(270, 144);
+            this.txtConsole.ReadOnly = true;
+            this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtConsole.Size = new System.Drawing.Size(509, 264);
             this.txtConsole.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(196, 11);
+            this.button1.Location = new System.Drawing.Point(447, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -90,7 +93,7 @@
             this.sourcePath.Location = new System.Drawing.Point(95, 44);
             this.sourcePath.Name = "sourcePath";
             this.sourcePath.ReadOnly = true;
-            this.sourcePath.Size = new System.Drawing.Size(188, 20);
+            this.sourcePath.Size = new System.Drawing.Size(427, 20);
             this.sourcePath.TabIndex = 6;
             // 
             // targetPath
@@ -98,14 +101,24 @@
             this.targetPath.Location = new System.Drawing.Point(95, 74);
             this.targetPath.Name = "targetPath";
             this.targetPath.ReadOnly = true;
-            this.targetPath.Size = new System.Drawing.Size(188, 20);
+            this.targetPath.Size = new System.Drawing.Size(427, 20);
             this.targetPath.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Program log:";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 262);
+            this.ClientSize = new System.Drawing.Size(540, 394);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.targetPath);
             this.Controls.Add(this.sourcePath);
             this.Controls.Add(this.setTargetPathButton);
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Button setTargetPathButton;
         private System.Windows.Forms.TextBox sourcePath;
         private System.Windows.Forms.TextBox targetPath;
+        private System.Windows.Forms.Label label1;
     }
 }

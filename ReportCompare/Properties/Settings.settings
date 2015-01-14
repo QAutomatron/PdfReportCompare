@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ComparePdfFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\armCompareTools\armcompare\comparepdf.exe</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DiffPdfFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\armCompareTools\armcompare\</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SourcePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>

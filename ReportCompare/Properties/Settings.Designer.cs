@@ -25,7 +25,7 @@ namespace ReportCompare.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\armCompareTools\\armcompare\\comparepdf.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ComparePdfFile {
             get {
                 return ((string)(this["ComparePdfFile"]));
@@ -37,7 +37,7 @@ namespace ReportCompare.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\armCompareTools\\armcompare\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DiffPdfFile {
             get {
                 return ((string)(this["DiffPdfFile"]));

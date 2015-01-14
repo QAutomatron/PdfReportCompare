@@ -34,8 +34,7 @@ namespace ReportCompare
             // Redirect the out Console stream
             Console.SetOut(_writer);
 
-            Console.WriteLine("Ready to work");
-
+            Program.log("Ready to work");
             sourcePath.Text = Properties.Settings.Default.SourcePath;
             targetPath.Text = Properties.Settings.Default.TargetPath;
         }
