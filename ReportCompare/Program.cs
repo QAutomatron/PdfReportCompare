@@ -32,6 +32,7 @@ namespace ReportCompare
             string[] sourceFolder = getFilesFromPath(Properties.Settings.Default.SourcePath);
             string[] targetFolder = getFilesFromPath(Properties.Settings.Default.TargetPath);
             compare(sourceFolder, targetFolder);
+            log("Job Done");
         }
 
 
@@ -41,8 +42,9 @@ namespace ReportCompare
             string comparePdfExec = Properties.Settings.Default.ComparePdfFile;
             string diffPdfExec = Properties.Settings.Default.DiffPdfFile;
             int sourceFilesCount = path1.Length;
+            int targetFilesCount = path2.Length;
             log("Найдено файлов в source:" + sourceFilesCount);
-            log("Найдено файлов в target:" + path2.Length);
+            log("Найдено файлов в target:" + targetFilesCount);
             mWindow.resetProgressBar(sourceFilesCount);
             foreach (string source in path1)
             {
@@ -52,18 +54,17 @@ namespace ReportCompare
                     {
                         count++;
                         int exitCode = runCmd(comparePdfExec, source, target);
-                        log("Programm Exit Code: " + exitCode);
                         if (exitCode >= 10)
                         {
                             log(string.Format("Найдены различия в файле: {0}", source));
                             DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
                              "Внимание",
-                            MessageBoxButtons.YesNo);
+                            MessageBoxButtons.YesNoCancel);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 runCmd(diffPdfExec, source, target);
                             }
-                            else if (dialogResult == DialogResult.No) { }
+                            else if (dialogResult == DialogResult.Cancel) { return; }
                         }
                         else if (exitCode == 1 || exitCode == 2) { log("Ошибка обработки файла " + source); }
                     }
@@ -83,6 +84,7 @@ namespace ReportCompare
             process.StartInfo = startInfo;
             process.Start();
             process.WaitForExit();
+            log("Programm Exit Code: " + process.ExitCode);
             return process.ExitCode;
         }
 
