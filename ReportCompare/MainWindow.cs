@@ -1,40 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ReportCompare
 {
     public partial class MainWindow : Form
     {
         TextWriter _writer = null;
-
+        
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        public void resetProgressBar(int max)
+        {
+            progressBar.Maximum = max;
+            progressBar.Step = 1;
+            progressBar.Value = 0;
+        }
+
+        public void updateProgressBar()
+        {
+            progressBar.PerformStep();
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Program.start();
+          //  backgroundWorker.ReportProgress(10);
+            
+          Program.start();
         }
 
-        public static string textBox1 { get; set; }
+       // public static string textBox1 { get; set; }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+  
             // Instantiate the writer
             _writer = new TextBoxStreamWriter(txtConsole);
             // Redirect the out Console stream
             Console.SetOut(_writer);
 
             Program.log("Ready to work");
+
             sourcePath.Text = Properties.Settings.Default.SourcePath;
             targetPath.Text = Properties.Settings.Default.TargetPath;
         }
@@ -66,6 +77,5 @@ namespace ReportCompare
                 Properties.Settings.Default.Save();
             }
         }
-
     }
 }

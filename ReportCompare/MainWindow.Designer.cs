@@ -36,6 +36,7 @@
             this.sourcePath = new System.Windows.Forms.TextBox();
             this.targetPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // btnStart
@@ -55,7 +56,7 @@
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConsole.Size = new System.Drawing.Size(509, 264);
+            this.txtConsole.Size = new System.Drawing.Size(509, 239);
             this.txtConsole.TabIndex = 1;
             // 
             // button1
@@ -113,11 +114,19 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Program log:";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(12, 363);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(510, 23);
+            this.progressBar.TabIndex = 9;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 394);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.targetPath);
             this.Controls.Add(this.sourcePath);
@@ -144,5 +153,6 @@
         private System.Windows.Forms.TextBox sourcePath;
         private System.Windows.Forms.TextBox targetPath;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

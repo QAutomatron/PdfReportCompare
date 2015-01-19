@@ -14,6 +14,7 @@ namespace ReportCompare
 {
     class Program
     {
+        private static MainWindow mWindow;
         [STAThread]
         static void Main()
         {
@@ -23,7 +24,7 @@ namespace ReportCompare
             Properties.Settings.Default.DiffPdfFile = AppDomain.CurrentDomain.BaseDirectory + "apps\\diffpdf.exe";
             Properties.Settings.Default.ComparePdfFile = AppDomain.CurrentDomain.BaseDirectory + "apps\\comparepdf.exe";
 
-            Application.Run(new MainWindow());
+            Application.Run(mWindow = new MainWindow());
         }
 
         public static void start()
@@ -39,6 +40,10 @@ namespace ReportCompare
             int count = 0;
             string comparePdfExec = Properties.Settings.Default.ComparePdfFile;
             string diffPdfExec = Properties.Settings.Default.DiffPdfFile;
+            int sourceFilesCount = path1.Length;
+            log("Найдено файлов в source:" + sourceFilesCount);
+            log("Найдено файлов в target:" + path2.Length);
+            mWindow.resetProgressBar(sourceFilesCount);
             foreach (string source in path1)
             {
                 foreach (string target in path2)
@@ -51,17 +56,19 @@ namespace ReportCompare
                         if (exitCode >= 10)
                         {
                             log(string.Format("Найдены различия в файле: {0}", source));
-                            DialogResult result1 = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
+                            DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
                              "Внимание",
                             MessageBoxButtons.YesNo);
-                            if (result1 == DialogResult.Yes) 
+                            if (dialogResult == DialogResult.Yes)
                             {
-                                runCmd(diffPdfExec, source, target); 
+                                runCmd(diffPdfExec, source, target);
                             }
-                            else if (result1 == DialogResult.No) { }
+                            else if (dialogResult == DialogResult.No) { }
                         }
+                        else if (exitCode == 1 || exitCode == 2) { log("Ошибка обработки файла " + source); }
                     }
                 }
+                mWindow.updateProgressBar();
             }
         }
 
@@ -114,7 +121,7 @@ namespace ReportCompare
         }
 
         //Вывод в консоль с временем
-        public static void log(string s) 
+        public static void log(string s)
         {
             string date = string.Format("{0:HH:mm:ss tt}", DateTime.Now);
             Console.WriteLine(date + s);
