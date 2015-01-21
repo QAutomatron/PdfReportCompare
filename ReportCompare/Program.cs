@@ -15,6 +15,7 @@ namespace ReportCompare
     class Program
     {
         private static MainWindow mWindow;
+
         [STAThread]
         static void Main()
         {
@@ -32,7 +33,6 @@ namespace ReportCompare
             string[] sourceFolder = getFilesFromPath(Properties.Settings.Default.SourcePath);
             string[] targetFolder = getFilesFromPath(Properties.Settings.Default.TargetPath);
             compare(sourceFolder, targetFolder);
-            log("Job Done");
         }
 
 
@@ -64,13 +64,14 @@ namespace ReportCompare
                             {
                                 runCmd(diffPdfExec, source, target);
                             }
-                            else if (dialogResult == DialogResult.Cancel) { return; }
+                            else if (dialogResult == DialogResult.Cancel) { log("Job Canceled"); return; }
                         }
                         else if (exitCode == 1 || exitCode == 2) { log("Ошибка обработки файла " + source); }
                     }
                 }
                 mWindow.updateProgressBar();
             }
+            log("Job Done");
         }
 
         // Запускает исполняемый файл с двумя агрументам, ждет завершения, возвращает ExitCode
@@ -93,8 +94,7 @@ namespace ReportCompare
         {
             return Directory.GetFiles(@path, "*.pdf");
         }
-
-
+        
         // Метод для выбора файла
         public static string selectFile()
         {
