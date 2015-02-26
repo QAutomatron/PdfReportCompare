@@ -37,6 +37,8 @@
             this.targetPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.dataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -51,12 +53,12 @@
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(13, 118);
+            this.txtConsole.Location = new System.Drawing.Point(16, 299);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConsole.Size = new System.Drawing.Size(509, 239);
+            this.txtConsole.Size = new System.Drawing.Size(506, 86);
             this.txtConsole.TabIndex = 1;
             // 
             // button1
@@ -108,7 +110,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 99);
+            this.label1.Location = new System.Drawing.Point(13, 283);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 8;
@@ -116,16 +118,26 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 363);
+            this.progressBar.Location = new System.Drawing.Point(12, 391);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(510, 23);
             this.progressBar.TabIndex = 9;
+            // 
+            // dataGrid
+            // 
+            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Location = new System.Drawing.Point(16, 118);
+            this.dataGrid.Name = "dataGrid";
+            this.dataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGrid.Size = new System.Drawing.Size(506, 161);
+            this.dataGrid.TabIndex = 10;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 394);
+            this.ClientSize = new System.Drawing.Size(540, 426);
+            this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.targetPath);
@@ -138,6 +150,7 @@
             this.Name = "MainWindow";
             this.Text = "ReportCompare";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +167,6 @@
         private System.Windows.Forms.TextBox targetPath;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.DataGridView dataGrid;
     }
 }

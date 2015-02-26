@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ReportCompare
 {
     public partial class MainWindow : Form
     {
         TextWriter _writer = null;
-        
+        BindingList<ReportFile> reportList = new BindingList<ReportFile>();
+
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         public void resetProgressBar(int max)
@@ -34,10 +36,17 @@ namespace ReportCompare
           Program.start();
         }
 
-       // public static string textBox1 { get; set; }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
+            var source = new BindingSource();
+            source.DataSource = reportList;
+            dataGrid.DataSource = source;
+            dataGrid.AutoResizeColumns();
+          //  dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DataGridViewColumn column0 = dataGrid.Columns[0];
+            column0.Width = 400;
+            DataGridViewColumn column1 = dataGrid.Columns[1];
+            column1.Width = 60;
   
             // Instantiate the writer
             _writer = new TextBoxStreamWriter(txtConsole);
@@ -77,5 +86,23 @@ namespace ReportCompare
                 Properties.Settings.Default.Save();
             }
         }
+
+        public void updateFileStatus(string filename, string newStatus) 
+        {
+            int fileIndex = reportList.IndexOf(reportList.SingleOrDefault(p => p.Filename.Equals(filename)));
+            ReportFile fileToChange = reportList[fileIndex];
+            fileToChange.Status = newStatus;
+            reportList[fileIndex] = fileToChange;
+        }
+
+        public void addReportToList(string filename, string status) {
+            reportList.Add(new ReportFile(filename, status));
+        }
+
+        public void clearReportList()
+        {
+            reportList.Clear();
+        }
+        
     }
 }

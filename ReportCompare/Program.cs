@@ -46,6 +46,8 @@ namespace ReportCompare
             log("Найдено файлов в source:" + sourceFilesCount);
             log("Найдено файлов в target:" + targetFilesCount);
             mWindow.resetProgressBar(sourceFilesCount);
+            mWindow.clearReportList();
+            foreach (string file in path1) { mWindow.addReportToList(Path.GetFileName(file), "Not Checked"); }
             foreach (string source in path1)
             {
                 foreach (string target in path2)
@@ -54,9 +56,11 @@ namespace ReportCompare
                     {
                         count++;
                         int exitCode = runCmd(comparePdfExec, source, target);
+                        mWindow.updateFileStatus(Path.GetFileName(source), "OK");
                         if (exitCode >= 10)
                         {
                             log(string.Format("Найдены различия в файле: {0}", source));
+                            mWindow.updateFileStatus(Path.GetFileName(source), "Diff");
                             DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
                              "Внимание",
                             MessageBoxButtons.YesNoCancel);
@@ -66,7 +70,10 @@ namespace ReportCompare
                             }
                             else if (dialogResult == DialogResult.Cancel) { log("Job Canceled"); return; }
                         }
-                        else if (exitCode == 1 || exitCode == 2) { log("Ошибка обработки файла " + source); }
+                        else if (exitCode == 1 || exitCode == 2) { 
+                            log("Ошибка обработки файла " + source);
+                            mWindow.updateFileStatus(Path.GetFileName(source), "Error");
+                        }
                     }
                 }
                 mWindow.updateProgressBar();
@@ -128,6 +135,7 @@ namespace ReportCompare
             string date = string.Format("{0:HH:mm:ss tt}", DateTime.Now);
             Console.WriteLine(date + s);
         }
+
 
     }
 }
