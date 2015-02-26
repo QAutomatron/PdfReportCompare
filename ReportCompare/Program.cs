@@ -77,16 +77,20 @@ namespace ReportCompare
                         {
                             log(string.Format("Найдены различия в файле: {0}", source));
                             mWindow.updateFileStatus(Path.GetFileName(source), "Diff");
-                            DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
-                             "Внимание",
-                            MessageBoxButtons.YesNoCancel);
-                            if (dialogResult == DialogResult.Yes)
+                            if (mWindow.SilentMode == false)
                             {
-                                runCmd(diffPdfExec, source, target);
+                                DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
+                                 "Внимание",
+                                MessageBoxButtons.YesNoCancel);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    runCmd(diffPdfExec, source, target);
+                                }
+                                else if (dialogResult == DialogResult.Cancel) { log("Job Canceled"); return; }
                             }
-                            else if (dialogResult == DialogResult.Cancel) { log("Job Canceled"); return; }
                         }
-                        else if (exitCode == 1 || exitCode == 2) { 
+                        else if (exitCode == 1 || exitCode == 2)
+                        {
                             log("Ошибка обработки файла " + source);
                             mWindow.updateFileStatus(Path.GetFileName(source), "Error");
                         }
@@ -119,11 +123,12 @@ namespace ReportCompare
             {
                 return Directory.GetFiles(@path, "*.pdf");
             }
-            catch (DirectoryNotFoundException) 
+            catch (DirectoryNotFoundException)
             {
-                return null; }
+                return null;
+            }
         }
-        
+
         // Метод для выбора файла
         public static string selectFile()
         {

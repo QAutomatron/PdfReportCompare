@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.silentModeBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +113,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 283);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Log:";
             // 
@@ -132,11 +133,22 @@
             this.dataGrid.Size = new System.Drawing.Size(506, 161);
             this.dataGrid.TabIndex = 10;
             // 
+            // silentModeBox
+            // 
+            this.silentModeBox.AutoSize = true;
+            this.silentModeBox.Location = new System.Drawing.Point(359, 21);
+            this.silentModeBox.Name = "silentModeBox";
+            this.silentModeBox.Size = new System.Drawing.Size(82, 17);
+            this.silentModeBox.TabIndex = 11;
+            this.silentModeBox.Text = "Silent Mode";
+            this.silentModeBox.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 426);
+            this.Controls.Add(this.silentModeBox);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label1);
@@ -168,5 +180,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.CheckBox silentModeBox;
     }
 }

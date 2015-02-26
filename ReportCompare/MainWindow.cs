@@ -11,6 +11,8 @@ namespace ReportCompare
     {
         TextWriter _writer = null;
         BindingList<ReportFile> reportList = new BindingList<ReportFile>(); // Список файлов
+        public bool SilentMode { get { return silentModeBox.Checked; } }
+
 
         public MainWindow()
         {
@@ -31,9 +33,9 @@ namespace ReportCompare
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-          //  backgroundWorker.ReportProgress(10);
-            
-          Program.start();
+            //  backgroundWorker.ReportProgress(10);
+
+            Program.start();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -41,13 +43,13 @@ namespace ReportCompare
             var source = new BindingSource();
             source.DataSource = reportList;
             dataGrid.DataSource = source;
-            dataGrid.AutoResizeColumns();
-          //  dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            // dataGrid.AutoResizeColumns();
+            // dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             DataGridViewColumn column0 = dataGrid.Columns[0];
             column0.Width = 400;
             DataGridViewColumn column1 = dataGrid.Columns[1];
             column1.Width = 60;
-  
+
             // Instantiate the writer
             _writer = new TextBoxStreamWriter(txtConsole);
             // Redirect the out Console stream
@@ -88,7 +90,7 @@ namespace ReportCompare
         }
 
         // Обновляем статус по имени файла
-        public void updateFileStatus(string filename, string newStatus) 
+        public void updateFileStatus(string filename, string newStatus)
         {
             int fileIndex = reportList.IndexOf(reportList.SingleOrDefault(p => p.Filename.Equals(filename)));
             ReportFile fileToChange = reportList[fileIndex];
@@ -98,7 +100,8 @@ namespace ReportCompare
 
 
         // Добавляем связку файл-статус в список 
-        public void addReportToList(string filename, string status) {
+        public void addReportToList(string filename, string status)
+        {
             reportList.Add(new ReportFile(filename, status));
         }
 
@@ -110,7 +113,7 @@ namespace ReportCompare
 
         private void sourcePath_TextChanged(object sender, EventArgs e)
         {
-             Properties.Settings.Default.SourcePath = sourcePath.Text;
+            Properties.Settings.Default.SourcePath = sourcePath.Text;
         }
 
         private void targetPath_TextChanged(object sender, EventArgs e)
