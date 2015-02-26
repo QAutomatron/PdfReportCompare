@@ -10,7 +10,7 @@ namespace ReportCompare
     public partial class MainWindow : Form
     {
         TextWriter _writer = null;
-        BindingList<ReportFile> reportList = new BindingList<ReportFile>();
+        BindingList<ReportFile> reportList = new BindingList<ReportFile>(); // Список файлов
 
         public MainWindow()
         {
@@ -87,6 +87,7 @@ namespace ReportCompare
             }
         }
 
+        // Обновляем статус по имени файла
         public void updateFileStatus(string filename, string newStatus) 
         {
             int fileIndex = reportList.IndexOf(reportList.SingleOrDefault(p => p.Filename.Equals(filename)));
@@ -95,14 +96,27 @@ namespace ReportCompare
             reportList[fileIndex] = fileToChange;
         }
 
+
+        // Добавляем связку файл-статус в список 
         public void addReportToList(string filename, string status) {
             reportList.Add(new ReportFile(filename, status));
         }
 
+        // Очищаем список файлов отчетов
         public void clearReportList()
         {
             reportList.Clear();
         }
-        
+
+        private void sourcePath_TextChanged(object sender, EventArgs e)
+        {
+             Properties.Settings.Default.SourcePath = sourcePath.Text;
+        }
+
+        private void targetPath_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.TargetPath = targetPath.Text;
+        }
+
     }
 }

@@ -32,7 +32,23 @@ namespace ReportCompare
         {
             string[] sourceFolder = getFilesFromPath(Properties.Settings.Default.SourcePath);
             string[] targetFolder = getFilesFromPath(Properties.Settings.Default.TargetPath);
-            compare(sourceFolder, targetFolder);
+            if (sourceFolder != null && targetFolder != null) { compare(sourceFolder, targetFolder); }
+            else if (sourceFolder == null)
+            {
+                MessageBox.Show("Папка Source пуста или указан неверный путь",
+                    "Path error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
+            else if (targetFolder == null)
+            {
+                MessageBox.Show("Папка Target пуста или указан неверный путь",
+                    "Path error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            };
         }
 
 
@@ -99,7 +115,13 @@ namespace ReportCompare
         //Возвращает массив файлов указанного расширения по указанному path
         static string[] getFilesFromPath(String path)
         {
-            return Directory.GetFiles(@path, "*.pdf");
+            try
+            {
+                return Directory.GetFiles(@path, "*.pdf");
+            }
+            catch (DirectoryNotFoundException) 
+            {
+                return null; }
         }
         
         // Метод для выбора файла

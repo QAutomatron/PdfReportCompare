@@ -95,17 +95,17 @@
             // 
             this.sourcePath.Location = new System.Drawing.Point(95, 44);
             this.sourcePath.Name = "sourcePath";
-            this.sourcePath.ReadOnly = true;
             this.sourcePath.Size = new System.Drawing.Size(427, 20);
             this.sourcePath.TabIndex = 6;
+            this.sourcePath.TextChanged += new System.EventHandler(this.sourcePath_TextChanged);
             // 
             // targetPath
             // 
             this.targetPath.Location = new System.Drawing.Point(95, 74);
             this.targetPath.Name = "targetPath";
-            this.targetPath.ReadOnly = true;
             this.targetPath.Size = new System.Drawing.Size(427, 20);
             this.targetPath.TabIndex = 7;
+            this.targetPath.TextChanged += new System.EventHandler(this.targetPath_TextChanged);
             // 
             // label1
             // 
@@ -114,7 +114,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Program log:";
+            this.label1.Text = "Log:";
             // 
             // progressBar
             // 
