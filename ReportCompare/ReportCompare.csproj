@@ -63,28 +63,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReportFile.cs" />
-    <Compile Include="OptionsWindow.cs">
+    <Compile Include="src\ReportFile.cs" />
+    <Compile Include="forms\OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OptionsWindow.Designer.cs">
+    <Compile Include="forms\OptionsWindow.Designer.cs">
       <DependentUpon>OptionsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="TextBoxStreamWriter.cs" />
+    <Compile Include="src\Settings.cs" />
+    <Compile Include="src\TextBoxStreamWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,10 +94,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="OptionsWindow.resx">
+    <EmbeddedResource Include="forms\OptionsWindow.resx">
       <DependentUpon>OptionsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
