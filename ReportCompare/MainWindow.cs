@@ -11,8 +11,9 @@ namespace ReportCompare
     {
         TextWriter _writer = null;
         BindingList<ReportFile> reportList = new BindingList<ReportFile>(); // Список файлов
-        public bool SilentMode { get { return silentModeBox.Checked; } }
-
+        public bool SilentMode { get { return silentModeCheckBox.Checked; } }
+        public string SourceFilesCount { get { return sourceCountValueLabel.Text; } set { sourceCountValueLabel.Text = value; } }
+        public string TargetFilesCount { get { return targetCountValueLabel.Text; } set { targetCountValueLabel.Text = value; } }
 
         public MainWindow()
         {
@@ -46,12 +47,12 @@ namespace ReportCompare
             // dataGrid.AutoResizeColumns();
             // dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             DataGridViewColumn column0 = dataGrid.Columns[0];
-            column0.Width = 400;
+            column0.Width = 380;
             DataGridViewColumn column1 = dataGrid.Columns[1];
-            column1.Width = 60;
+            column1.Width = 100;
 
             // Instantiate the writer
-            _writer = new TextBoxStreamWriter(txtConsole);
+            _writer = new TextBoxStreamWriter(logTextBox);
             // Redirect the out Console stream
             Console.SetOut(_writer);
 
@@ -103,6 +104,7 @@ namespace ReportCompare
         public void addReportToList(string filename, string status)
         {
             reportList.Add(new ReportFile(filename, status));
+          //  dataGrid.FirstDisplayedScrollingRowIndex = dataGrid.Rows.Count-1; //Autoscroll
         }
 
         // Очищаем список файлов отчетов
@@ -119,6 +121,15 @@ namespace ReportCompare
         private void targetPath_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.TargetPath = targetPath.Text;
+        }
+
+        private void dataGrid_CellCont‌entDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+         //   MessageBox.Show(e.RowIndex.ToString());
+        //    MessageBox.Show(reportList[e.RowIndex].Filename);
+            string sourceFile = Properties.Settings.Default.SourcePath + "/" + reportList[e.RowIndex].Filename;
+            string targetFile = Properties.Settings.Default.TargetPath + "/" + reportList[e.RowIndex].Filename;
+            Program.doVisualCompare(sourceFile, targetFile);
         }
 
     }

@@ -59,6 +59,8 @@ namespace ReportCompare
             string diffPdfExec = Properties.Settings.Default.DiffPdfFile;
             int sourceFilesCount = path1.Length;
             int targetFilesCount = path2.Length;
+            mWindow.SourceFilesCount = sourceFilesCount.ToString();
+            mWindow.TargetFilesCount = targetFilesCount.ToString();
             log("Найдено файлов в source:" + sourceFilesCount);
             log("Найдено файлов в target:" + targetFilesCount);
             mWindow.resetProgressBar(sourceFilesCount);
@@ -163,6 +165,18 @@ namespace ReportCompare
             Console.WriteLine(date + s);
         }
 
+        public static void doVisualCompare(string source, string target)
+        {
+            string diffPdfExec = Properties.Settings.Default.DiffPdfFile;
+            DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
+                                     "Внимание",
+                                    MessageBoxButtons.YesNoCancel);
+            if (dialogResult == DialogResult.Yes)
+            {
+                runCmd(diffPdfExec, source, target);
+            }
+
+        }
 
     }
 }
