@@ -88,7 +88,17 @@ namespace ReportCompare
                                 {
                                     runCmd(diffPdfExec, source, target);
                                 }
-                                else if (dialogResult == DialogResult.Cancel) { log("Job Canceled"); return; }
+                                else if (dialogResult == DialogResult.Cancel)
+                                {
+                                    log("Job Canceled");
+                                    MessageBox.Show("Выполнение остановлено",
+                                                    "Stop",
+                                                    MessageBoxButtons.OK,
+                                                    MessageBoxIcon.Exclamation,
+                                                    MessageBoxDefaultButton.Button1);
+                                    mWindow.resetProgressBar(0);
+                                    return;
+                                }
                             }
                         }
                         else if (exitCode == 1 || exitCode == 2)

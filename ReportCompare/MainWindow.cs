@@ -34,8 +34,6 @@ namespace ReportCompare
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //  backgroundWorker.ReportProgress(10);
-
             Program.start();
         }
 
@@ -123,10 +121,13 @@ namespace ReportCompare
             Properties.Settings.Default.TargetPath = targetPath.Text;
         }
 
+        /// <summary>
+        /// По двойному клику на строку предлагает выполнить визуальное сравнение выделенного отчета
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGrid_CellCont‌entDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-         //   MessageBox.Show(e.RowIndex.ToString());
-        //    MessageBox.Show(reportList[e.RowIndex].Filename);
             string sourceFile = Properties.Settings.Default.SourcePath + "/" + reportList[e.RowIndex].Filename;
             string targetFile = Properties.Settings.Default.TargetPath + "/" + reportList[e.RowIndex].Filename;
             Program.doVisualCompare(sourceFile, targetFile);
