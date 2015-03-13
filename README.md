@@ -1,11 +1,11 @@
-# README #
+## Readme ##
 
 Compares .pdf reports with the same names in two different folders.
 C# WinForm Project.
 
 * PdfReportCompare (C# version)
 
-### Возможности ###
+### Features ###
 
 * User can set path to comparePdf and DiffPDf via "Options" button
 * User can compare .pdf reports with the same names in two different folders (source vs target)
@@ -24,7 +24,7 @@ The application uses the following programs (located in "apps" folder):
 
 =========
 
-# README #
+# Описание #
 
 Программа для сравнения одноименных pdf-отчетов из двух разных папок.
 Проект на C#.
