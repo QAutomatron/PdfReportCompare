@@ -103,7 +103,7 @@
             this.Controls.Add(this.setPathToDiff);
             this.Name = "OptionsWindow";
             this.Text = "Options";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.OptionsForm);
             this.ResumeLayout(false);
             this.PerformLayout();
 

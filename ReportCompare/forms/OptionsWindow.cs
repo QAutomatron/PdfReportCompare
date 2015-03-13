@@ -19,7 +19,7 @@ namespace ReportCompare
         }
 
         //Грузим форму и подгружаем настройки в TextBoxs
-        private void Form1_Load(object sender, EventArgs e)
+        private void OptionsForm(object sender, EventArgs e)
         {
             pathToCompareTextBox.Text = Properties.Settings.Default.ComparePdfFile;
             pathToDiffTextBox.Text = Properties.Settings.Default.DiffPdfFile;

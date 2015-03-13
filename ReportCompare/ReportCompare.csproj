@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\ReportFile.cs" />
+    <Compile Include="src\model\ReportFile.cs" />
     <Compile Include="forms\OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
