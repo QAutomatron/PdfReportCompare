@@ -58,7 +58,7 @@
             // 
             // logTextBox
             // 
-            this.logTextBox.Location = new System.Drawing.Point(16, 299);
+            this.logTextBox.Location = new System.Drawing.Point(12, 406);
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
@@ -115,7 +115,7 @@
             // logLabel
             // 
             this.logLabel.AutoSize = true;
-            this.logLabel.Location = new System.Drawing.Point(13, 283);
+            this.logLabel.Location = new System.Drawing.Point(13, 390);
             this.logLabel.Name = "logLabel";
             this.logLabel.Size = new System.Drawing.Size(28, 13);
             this.logLabel.TabIndex = 8;
@@ -123,7 +123,7 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 391);
+            this.progressBar.Location = new System.Drawing.Point(12, 498);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(510, 23);
             this.progressBar.TabIndex = 9;
@@ -133,13 +133,13 @@
             this.dataGrid.AllowUserToResizeColumns = false;
             this.dataGrid.AllowUserToResizeRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(16, 118);
+            this.dataGrid.Location = new System.Drawing.Point(16, 100);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid.Size = new System.Drawing.Size(506, 161);
+            this.dataGrid.Size = new System.Drawing.Size(506, 287);
             this.dataGrid.TabIndex = 10;
             this.dataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellContentDoubleClick);
             // 
@@ -156,7 +156,7 @@
             // targetCountTextLabel
             // 
             this.targetCountTextLabel.AutoSize = true;
-            this.targetCountTextLabel.Location = new System.Drawing.Point(471, 321);
+            this.targetCountTextLabel.Location = new System.Drawing.Point(467, 427);
             this.targetCountTextLabel.Name = "targetCountTextLabel";
             this.targetCountTextLabel.Size = new System.Drawing.Size(41, 13);
             this.targetCountTextLabel.TabIndex = 12;
@@ -165,7 +165,7 @@
             // targetCountValueLabel
             // 
             this.targetCountValueLabel.AutoSize = true;
-            this.targetCountValueLabel.Location = new System.Drawing.Point(518, 321);
+            this.targetCountValueLabel.Location = new System.Drawing.Point(514, 427);
             this.targetCountValueLabel.Name = "targetCountValueLabel";
             this.targetCountValueLabel.Size = new System.Drawing.Size(13, 13);
             this.targetCountValueLabel.TabIndex = 13;
@@ -174,7 +174,7 @@
             // sourceCountTextLabel
             // 
             this.sourceCountTextLabel.AutoSize = true;
-            this.sourceCountTextLabel.Location = new System.Drawing.Point(468, 299);
+            this.sourceCountTextLabel.Location = new System.Drawing.Point(464, 405);
             this.sourceCountTextLabel.Name = "sourceCountTextLabel";
             this.sourceCountTextLabel.Size = new System.Drawing.Size(44, 13);
             this.sourceCountTextLabel.TabIndex = 14;
@@ -183,7 +183,7 @@
             // sourceCountValueLabel
             // 
             this.sourceCountValueLabel.AutoSize = true;
-            this.sourceCountValueLabel.Location = new System.Drawing.Point(518, 299);
+            this.sourceCountValueLabel.Location = new System.Drawing.Point(514, 405);
             this.sourceCountValueLabel.Name = "sourceCountValueLabel";
             this.sourceCountValueLabel.Size = new System.Drawing.Size(13, 13);
             this.sourceCountValueLabel.TabIndex = 15;
@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 426);
+            this.ClientSize = new System.Drawing.Size(538, 523);
             this.Controls.Add(this.sourceCountValueLabel);
             this.Controls.Add(this.sourceCountTextLabel);
             this.Controls.Add(this.targetCountValueLabel);
@@ -209,6 +209,11 @@
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.startButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(554, 561);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(554, 561);
             this.Name = "MainWindow";
             this.Text = "ReportCompare";
             this.Load += new System.EventHandler(this.MainForm_Load);

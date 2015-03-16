@@ -132,6 +132,5 @@ namespace ReportCompare
             string targetFile = Properties.Settings.Default.TargetPath + "/" + reportList[e.RowIndex].Filename;
             Program.doVisualCompare(sourceFile, targetFile);
         }
-
     }
 }

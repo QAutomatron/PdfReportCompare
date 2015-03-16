@@ -101,6 +101,10 @@
             this.Controls.Add(this.pathToCompareLabel);
             this.Controls.Add(this.setPathToCompare);
             this.Controls.Add(this.setPathToDiff);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(525, 116);
+            this.MinimizeBox = false;
             this.Name = "OptionsWindow";
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionsForm);
