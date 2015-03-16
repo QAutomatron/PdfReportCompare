@@ -43,6 +43,10 @@
             this.targetCountValueLabel = new System.Windows.Forms.Label();
             this.sourceCountTextLabel = new System.Windows.Forms.Label();
             this.sourceCountValueLabel = new System.Windows.Forms.Label();
+            this.diffCountValueLabel = new System.Windows.Forms.Label();
+            this.diffCountTextLabel = new System.Windows.Forms.Label();
+            this.errCountTextLabel = new System.Windows.Forms.Label();
+            this.errCountValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,6 +150,8 @@
             // silentModeCheckBox
             // 
             this.silentModeCheckBox.AutoSize = true;
+            this.silentModeCheckBox.Checked = true;
+            this.silentModeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.silentModeCheckBox.Location = new System.Drawing.Point(359, 21);
             this.silentModeCheckBox.Name = "silentModeCheckBox";
             this.silentModeCheckBox.Size = new System.Drawing.Size(82, 17);
@@ -156,7 +162,7 @@
             // targetCountTextLabel
             // 
             this.targetCountTextLabel.AutoSize = true;
-            this.targetCountTextLabel.Location = new System.Drawing.Point(467, 427);
+            this.targetCountTextLabel.Location = new System.Drawing.Point(464, 428);
             this.targetCountTextLabel.Name = "targetCountTextLabel";
             this.targetCountTextLabel.Size = new System.Drawing.Size(41, 13);
             this.targetCountTextLabel.TabIndex = 12;
@@ -165,7 +171,7 @@
             // targetCountValueLabel
             // 
             this.targetCountValueLabel.AutoSize = true;
-            this.targetCountValueLabel.Location = new System.Drawing.Point(514, 427);
+            this.targetCountValueLabel.Location = new System.Drawing.Point(509, 428);
             this.targetCountValueLabel.Name = "targetCountValueLabel";
             this.targetCountValueLabel.Size = new System.Drawing.Size(13, 13);
             this.targetCountValueLabel.TabIndex = 13;
@@ -174,7 +180,7 @@
             // sourceCountTextLabel
             // 
             this.sourceCountTextLabel.AutoSize = true;
-            this.sourceCountTextLabel.Location = new System.Drawing.Point(464, 405);
+            this.sourceCountTextLabel.Location = new System.Drawing.Point(464, 406);
             this.sourceCountTextLabel.Name = "sourceCountTextLabel";
             this.sourceCountTextLabel.Size = new System.Drawing.Size(44, 13);
             this.sourceCountTextLabel.TabIndex = 14;
@@ -183,17 +189,57 @@
             // sourceCountValueLabel
             // 
             this.sourceCountValueLabel.AutoSize = true;
-            this.sourceCountValueLabel.Location = new System.Drawing.Point(514, 405);
+            this.sourceCountValueLabel.Location = new System.Drawing.Point(509, 406);
             this.sourceCountValueLabel.Name = "sourceCountValueLabel";
             this.sourceCountValueLabel.Size = new System.Drawing.Size(13, 13);
             this.sourceCountValueLabel.TabIndex = 15;
             this.sourceCountValueLabel.Text = "0";
+            // 
+            // diffCountValueLabel
+            // 
+            this.diffCountValueLabel.AutoSize = true;
+            this.diffCountValueLabel.Location = new System.Drawing.Point(509, 451);
+            this.diffCountValueLabel.Name = "diffCountValueLabel";
+            this.diffCountValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.diffCountValueLabel.TabIndex = 16;
+            this.diffCountValueLabel.Text = "0";
+            // 
+            // diffCountTextLabel
+            // 
+            this.diffCountTextLabel.AutoSize = true;
+            this.diffCountTextLabel.Location = new System.Drawing.Point(464, 451);
+            this.diffCountTextLabel.Name = "diffCountTextLabel";
+            this.diffCountTextLabel.Size = new System.Drawing.Size(26, 13);
+            this.diffCountTextLabel.TabIndex = 17;
+            this.diffCountTextLabel.Text = "Diff:";
+            // 
+            // errCountTextLabel
+            // 
+            this.errCountTextLabel.AutoSize = true;
+            this.errCountTextLabel.Location = new System.Drawing.Point(464, 479);
+            this.errCountTextLabel.Name = "errCountTextLabel";
+            this.errCountTextLabel.Size = new System.Drawing.Size(37, 13);
+            this.errCountTextLabel.TabIndex = 19;
+            this.errCountTextLabel.Text = "Errors:";
+            // 
+            // errCountValueLabel
+            // 
+            this.errCountValueLabel.AutoSize = true;
+            this.errCountValueLabel.Location = new System.Drawing.Point(509, 479);
+            this.errCountValueLabel.Name = "errCountValueLabel";
+            this.errCountValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.errCountValueLabel.TabIndex = 18;
+            this.errCountValueLabel.Text = "0";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 523);
+            this.Controls.Add(this.errCountTextLabel);
+            this.Controls.Add(this.errCountValueLabel);
+            this.Controls.Add(this.diffCountTextLabel);
+            this.Controls.Add(this.diffCountValueLabel);
             this.Controls.Add(this.sourceCountValueLabel);
             this.Controls.Add(this.sourceCountTextLabel);
             this.Controls.Add(this.targetCountValueLabel);
@@ -240,5 +286,9 @@
         private System.Windows.Forms.Label targetCountValueLabel;
         private System.Windows.Forms.Label sourceCountTextLabel;
         private System.Windows.Forms.Label sourceCountValueLabel;
+        private System.Windows.Forms.Label diffCountValueLabel;
+        private System.Windows.Forms.Label diffCountTextLabel;
+        private System.Windows.Forms.Label errCountTextLabel;
+        private System.Windows.Forms.Label errCountValueLabel;
     }
 }

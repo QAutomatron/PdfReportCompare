@@ -14,6 +14,8 @@ namespace ReportCompare
         public bool SilentMode { get { return silentModeCheckBox.Checked; } }
         public string SourceFilesCount { get { return sourceCountValueLabel.Text; } set { sourceCountValueLabel.Text = value; } }
         public string TargetFilesCount { get { return targetCountValueLabel.Text; } set { targetCountValueLabel.Text = value; } }
+        public string DiffFilesCount { get { return diffCountTextLabel.Text;} set {diffCountValueLabel.Text = value;} }
+        public string ErrorFilesCount { get { return errCountTextLabel.Text; } set { errCountValueLabel.Text = value; } }
 
         public MainWindow()
         {

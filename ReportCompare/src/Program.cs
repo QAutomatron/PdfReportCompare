@@ -54,7 +54,8 @@ namespace ReportCompare
 
         static void compare(string[] path1, string[] path2)
         {
-            int count = 0;
+            int diffCount = 0;
+            int errorCount = 0;
             string comparePdfExec = Properties.Settings.Default.ComparePdfFile;
             string diffPdfExec = Properties.Settings.Default.DiffPdfFile;
             int sourceFilesCount = path1.Length;
@@ -72,13 +73,15 @@ namespace ReportCompare
                 {
                     if (Path.GetFileName(source) == Path.GetFileName(target))
                     {
-                        count++;
                         int exitCode = runCmd(comparePdfExec, source, target);
                         mWindow.updateFileStatus(Path.GetFileName(source), "OK");
                         if (exitCode >= 10)
                         {
                             log(string.Format("Найдены различия в файле: {0}", source));
                             mWindow.updateFileStatus(Path.GetFileName(source), "Diff");
+                            diffCount++;
+                            mWindow.DiffFilesCount = diffCount.ToString();
+                            
                             if (mWindow.SilentMode == false)
                             {
                                 DialogResult dialogResult = MessageBox.Show("Найдены различия в файле:\n" + source + "\nСравнить их визуально?",
@@ -105,6 +108,8 @@ namespace ReportCompare
                         {
                             log("Ошибка обработки файла " + source);
                             mWindow.updateFileStatus(Path.GetFileName(source), "Error");
+                            errorCount++;
+                            mWindow.ErrorFilesCount = errorCount.ToString();
                         }
                     }
                 }
