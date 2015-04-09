@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace ReportCompare
 {
@@ -36,7 +39,14 @@ namespace ReportCompare
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Program.start();
+            // Program.start();
+
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                /* run your code here */
+                Program.start();
+            }).Start();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,7 +65,6 @@ namespace ReportCompare
             _writer = new TextBoxStreamWriter(logTextBox);
             // Redirect the out Console stream
             Console.SetOut(_writer);
-
             Program.log("Ready to work");
 
             sourcePath.Text = Properties.Settings.Default.SourcePath;
@@ -133,6 +142,26 @@ namespace ReportCompare
             string sourceFile = Properties.Settings.Default.SourcePath + "/" + reportList[e.RowIndex].Filename;
             string targetFile = Properties.Settings.Default.TargetPath + "/" + reportList[e.RowIndex].Filename;
             Program.doVisualCompare(sourceFile, targetFile);
+        }
+
+        /// <summary>
+        /// Меняем цвет строки в зависимости от статуса файла
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int colIndex = e.ColumnIndex;
+            int rowIndex = e.RowIndex;
+
+            if (rowIndex >= 0 && colIndex >= 0)
+            {
+                DataGridViewRow theRow = dataGrid.Rows[rowIndex];
+                
+                if (theRow.Cells[1].Value.ToString() == "Diff") { theRow.DefaultCellStyle.BackColor = Color.LightYellow; }
+                if (theRow.Cells[1].Value.ToString() == "Error") { theRow.DefaultCellStyle.BackColor = Color.Red; }
+
+            }
         }
     }
 }

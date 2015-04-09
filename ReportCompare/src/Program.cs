@@ -62,6 +62,7 @@ namespace ReportCompare
             int targetFilesCount = path2.Length;
             mWindow.SourceFilesCount = sourceFilesCount.ToString();
             mWindow.TargetFilesCount = targetFilesCount.ToString();
+            log("===Job STARTED===");
             log("Найдено файлов в source:" + sourceFilesCount);
             log("Найдено файлов в target:" + targetFilesCount);
             mWindow.resetProgressBar(sourceFilesCount);
@@ -115,7 +116,9 @@ namespace ReportCompare
                 }
                 mWindow.updateProgressBar();
             }
-            log("Job Done");
+            log("===Job DONE===");
+            log(string.Format("Найдено различий: {0}", diffCount.ToString()));
+            log(string.Format("Ошибок: {0}", errorCount.ToString()));
         }
 
         // Запускает исполняемый файл с двумя агрументам, ждет завершения, возвращает ExitCode
@@ -129,7 +132,7 @@ namespace ReportCompare
             process.StartInfo = startInfo;
             process.Start();
             process.WaitForExit();
-            log("Programm Exit Code: " + process.ExitCode);
+            //log("Programm Exit Code: " + process.ExitCode);
             return process.ExitCode;
         }
 

@@ -146,6 +146,7 @@
             this.dataGrid.Size = new System.Drawing.Size(506, 287);
             this.dataGrid.TabIndex = 10;
             this.dataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellContentDoubleClick);
+            this.dataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGrid_CellFormatting);
             // 
             // silentModeCheckBox
             // 
