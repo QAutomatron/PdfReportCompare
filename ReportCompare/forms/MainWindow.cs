@@ -39,14 +39,7 @@ namespace ReportCompare
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // Program.start();
-
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                /* run your code here */
-                Program.start();
-            }).Start();
+            Program.start();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
